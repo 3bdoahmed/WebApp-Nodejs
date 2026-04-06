@@ -33,12 +33,12 @@ pipeline{
                         sed -i "s#.*image:.*#        image: abdelrahman678/web-js-app:v${BUILD_NUMBER}#g" js-webapp-cd/deployment.yml
 
                         git add js-webapp-cd/deployment.yml
-                        git commit -m "change image version to v${BUILD_NUMBER} by jenkins" || echo "No changes to commit"
+                        git commit -m "change image version to v${BUILD_NUMBER} by jenkins"
                         git push origin main
                     """
+                }
+            }
         }
-    }
-}
     
 
     }
