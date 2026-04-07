@@ -23,7 +23,7 @@ pipeline{
                 sshagent(credentials: ['github-ssh-key']) {
                     sh """
                         if [ -d "js-webapp-cd" ]; then 
-                            cd java-cd && git pull
+                            cd WebApp-Nodejs && git pull
                         else 
                            git clone git@github.com:3bdoahmed/js-webapp-cd.git js-webapp-cd && cd js-webapp-cd
                         fi
