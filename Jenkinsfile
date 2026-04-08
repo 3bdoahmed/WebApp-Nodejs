@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage("build docker file"){
             steps{
-                sh "docker build -t abdelrahman678/web-js-app:v${BUILD_NUMBER} "
+                sh "docker build -t abdelrahman678/web-js-app:v${BUILD_NUMBER} ."
             }
         }
         stage("push image to dockerhub"){
@@ -23,7 +23,7 @@ pipeline{
                 sshagent(credentials: ['github-ssh-key']) {
                     sh """
                         if [ -d "js-webapp-cd" ]; then 
-                            cd java-cd && git pull
+                            cd WebApp-Nodejs && git pull
                         else 
                            git clone git@github.com:3bdoahmed/js-webapp-cd.git && cd js-webapp-cd
                         fi
