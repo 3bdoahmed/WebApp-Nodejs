@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage("build docker file"){
             steps{
-                sh "docker build -t abdelrahman678/web-js-app:v${BUILD_NUMBER} "
+                sh "docker build -t abdelrahman678/web-js-app:v${BUILD_NUMBER} ."
             }
         }
         stage("push image to dockerhub"){
