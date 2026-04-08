@@ -1,4 +1,4 @@
-pipeline {
+pipeline{
     agent {
         label "agent-01"
     }
@@ -6,14 +6,14 @@ pipeline {
         DOCKER_USERNAME = credentials("docker_username")
         DOCKER_PASSWORD = credentials("docker_password")
     }
-    stages {
-        stage("build docker image") {
-            steps {
+    stages{
+        stage("build docker file"){
+            steps{
                 sh "docker build -t abdelrahman678/web-js-app:v${BUILD_NUMBER} ."
             }
         }
-        stage("push image to dockerhub") {
-            steps {
+        stage("push image to dockerhub"){
+            steps{
                 sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
                 sh "docker push abdelrahman678/web-js-app:v${BUILD_NUMBER}"
             }
@@ -21,21 +21,24 @@ pipeline {
         stage("update image in repo of argocd") {
             steps {
                 sh """
-                    if [ -d "js-webapp-cd" ]; then
-                        cd js-webapp-cd && git pull
-                    else
+                    if [ -d "${WORKSPACE}/js-webapp-cd" ]; then 
+                        cd ${WORKSPACE}/js-webapp-cd && git pull
+                    else 
                         git clone git@github.com:3bdoahmed/js-webapp-cd.git
                     fi
+                    cd ${WORKSPACE}/js-webapp-cd
+                    git config user.email "abd.2002o.ww@gmail.com"
+                    git config user.name "3bdoahmed"
+                    sed -i "s#.*image:.*#        image: abdelrahman678/web-js-app:v${BUILD_NUMBER}#g" deployment.yml
 
-                    cd js-webapp-cd && \
-                    git config user.email "abd.2002o.ww@gmail.com" && \
-                    git config user.name "3bdoahmed" && \
-                    sed -i "s#.*image:.*#        image: abdelrahman678/web-js-app:v${BUILD_NUMBER}#g" deployment.yml && \
-                    git add deployment.yml && \
-                    git commit -m "change image version to v${BUILD_NUMBER} by jenkins" && \
+                    git add deployment.yml
+                    git commit -m "change image version to v${BUILD_NUMBER} by jenkins"
                     git push origin main
                 """
             }
         }
+        
+    
+
     }
 }
