@@ -37,7 +37,7 @@ A simple Node.js web application demonstrating backend development and deploymen
   1. Pull code from GitHub
   2. Build Docker image
   3. Push to Docker registry
-  4. Deploy to Kubernetes via ArgoCD
+  4. updata the image version at deploy repo.
 
 ## 📌 Author
 AbdelRahman Ahmed
