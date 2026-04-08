@@ -26,7 +26,7 @@ pipeline{
                     else 
                         git clone git@github.com:3bdoahmed/js-webapp-cd.git
                     fi
-                    cd js-webapp-cd
+                    cd js-webapp/js-webapp-cd
                     git config user.email "abd.2002o.ww@gmail.com"
                     git config user.name "3bdoahmed"
                     sed -i "s#.*image:.*#        image: abdelrahman678/web-js-app:v${BUILD_NUMBER}#g" deployment.yml
