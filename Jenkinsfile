@@ -25,7 +25,7 @@ pipeline{
                         if [ -d "js-webapp-cd" ]; then 
                             cd java-cd && git pull
                         else 
-                           git clone git@github.com:3bdoahmed/js-webapp-cd.git js-webapp-cd && cd js-webapp-cd
+                           git clone git@github.com:3bdoahmed/js-webapp-cd.git && cd js-webapp-cd
                         fi
 
                         git config user.email "abd.2002o.ww@gmail.com"
