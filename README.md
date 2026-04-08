@@ -1,30 +1,43 @@
-# High Availability Web Application Deployment & Versioning on Kubernetes
+# WebApp-Nodejs
 
-This project demonstrates the development, containerization, and deployment of a Node.js web application on a Kubernetes cluster with high availability.
+A simple Node.js web application demonstrating backend development and deployment via CI/CD pipelines.
 
-## Project Overview
+## 🚀 Features
+- Built with Node.js and Express.js
+- Supports REST APIs
+- Containerized with Docker
+- Ready for CI/CD integration and Kubernetes deployment
 
-- Developed and deployed a **Node.js web application** on a Kubernetes cluster.  
-- Created a **Docker image** for the application and deployed it using a **Deployment** with multiple replicas to ensure **fault tolerance**.  
-- Implemented a **Service** to expose the application externally and manage traffic to the Pods.  
-- Updated the application to a **new version**, pushed the updated image to **Docker Hub**, and redeployed it successfully on Kubernetes, demonstrating seamless **rolling updates**.  
-- Leveraged **labels, selectors, and container orchestration best practices** to ensure maintainable and scalable deployment.  
-- Gained hands-on experience with **Pods, Deployments, Services, and container versioning** in a production-like Kubernetes environment.  
+## 📁 Project Structure
+/WebApp-Nodejs
+│
+├── webapp.js          # Main Node.js application
+├── package.json       # Node.js dependencies
+├── Dockerfile         # Docker container definition
+├── Jenkinsfile        # Jenkins pipeline for CI/CD
+└── README.md          # Project description
 
-## Outcome
+## 💻 Prerequisites
+- Node.js v16+
+- Docker
+- Jenkins (optional, for CI/CD)
+- Kubernetes cluster (optional)
 
-- Achieved a **scalable, fault-tolerant web application deployment**.  
-- Updates to the application are reflected **in real-time across the cluster**.  
-- Highlights practical **DevOps and Kubernetes proficiency**.
+## ⚙️ Running Locally
+1. Install dependencies:
+2. Start the app:
+3. Open in browser:
 
-## Features
+## 🐳 Docker
+1. Build Docker image:
+2. Run container:
 
-- **High Availability:** Multiple replicas of the application running across nodes.  
-- **Rolling Updates:** Smooth version updates with zero downtime.  
-- **External Access:** Service exposes the application outside the cluster.  
-- **Scalability:** Easily scale the number of replicas using Deployment.  
-- **Containerization:** Dockerized application with versioning on Docker Hub.
+## 🔄 CI/CD Pipeline
+- **Jenkins** automates:
+  1. Pull code from GitHub
+  2. Build Docker image
+  3. Push to Docker registry
+  4. Deploy to Kubernetes via ArgoCD
 
-## Author
-
-**AbdelRahman Ahmed**
+## 📌 Author
+AbdelRahman Ahmed
