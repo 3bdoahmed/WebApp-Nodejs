@@ -22,16 +22,16 @@ pipeline{
             steps {
                 sh """
                     if [ -d "js-webapp-cd" ]; then 
-                        cd java-cd && git pull
+                        cd js-webapp-cd && git pull
                     else 
-                        git clone git@github.com:3bdoahmed/js-webapp-cd.git && cd js-webapp-cd
+                        git clone git@github.com:3bdoahmed/js-webapp-cd.git
                     fi
-
+                    cd js-webapp-cd
                     git config user.email "abd.2002o.ww@gmail.com"
                     git config user.name "3bdoahmed"
-                    sed -i "s#.*image:.*#        image: abdelrahman678/web-js-app:v${BUILD_NUMBER}#g" js-webapp-cd/deployment.yml
+                    sed -i "s#.*image:.*#        image: abdelrahman678/web-js-app:v${BUILD_NUMBER}#g" deployment.yml
 
-                    git add js-webapp-cd/deployment.yml
+                    git add deployment.yml
                     git commit -m "change image version to v${BUILD_NUMBER} by jenkins"
                     git push origin main
                 """
