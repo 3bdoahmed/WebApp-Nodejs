@@ -1,6 +1,6 @@
 pipeline{
     agent {
-        label "agent-01"
+        label any
     }
     environment {
         DOCKER_USERNAME = credentials("docker_username")
