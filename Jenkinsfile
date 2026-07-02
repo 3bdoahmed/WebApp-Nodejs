@@ -18,7 +18,7 @@ pipeline{
                 sh "docker push abdelrahman678/web-js-app:v${BUILD_NUMBER}"
             }
         }
-        stage("update image in repo of argocd") {
+ /*       stage("update image in repo of argocd") {
             steps {
                 sh """
                     if [ -d "${WORKSPACE}/js-webapp-cd" ]; then 
@@ -36,7 +36,7 @@ pipeline{
                     git push origin main
                 """
             }
-        }
+        }*/
         
     
 
