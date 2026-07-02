@@ -1,7 +1,5 @@
 pipeline{
-    agent {
-        label any
-    }
+    agent any
     environment {
         DOCKER_USERNAME = credentials("docker_username")
         DOCKER_PASSWORD = credentials("docker_password")
