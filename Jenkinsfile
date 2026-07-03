@@ -10,12 +10,32 @@ pipeline{
                 sh "docker build -t abdelrahman678/web-js-app:v${BUILD_NUMBER} ."
             }
         }
+        stage('Trivy Security Scan'){
+            steps {
+                sh ''' 
+                IMAGE_NAME="abdelrahman678/web-js-app:v${BUILD_NUMBER}"
+                echo "Scanning LOW and MEDIUM vulnerabilities..."
+                trivy image -q --exit-code 0 --severity LOW,MEDIUM $IMAGE_NAME
+                echo "Scanning HIGH and CRITICAL vulnerabilities..." 
+                trivy image -q --exit-code 1 --severity HIGH,CRITICAL $IMAGE_NAME
+                EXIT_CODE=$?
+                if [ $EXIT_CODE -eq 1 ]; then 
+                    echo "HIGH or CRITICAL vulnerabilities found!" 
+                    exit 1 
+                else 
+                    echo "No HIGH or CRITICAL vulnerabilities found." 
+                fi 
+                '''
+            }
+        }
         stage("push image to dockerhub"){
             steps{
                 sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
                 sh "docker push abdelrahman678/web-js-app:v${BUILD_NUMBER}"
             }
         }
+
+        
  /*       stage("update image in repo of argocd") {
             steps {
                 sh """
