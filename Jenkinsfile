@@ -26,7 +26,7 @@ pipeline{
                 
             }  
 }
-        /*stage('Trivy Security Scan'){
+        stage('Trivy Security Scan'){
             steps {
                 sh ''' 
                 IMAGE_NAME="abdelrahman678/web-js-app:v${BUILD_NUMBER}"
@@ -43,7 +43,7 @@ pipeline{
                 fi 
                 '''
             }
-        }*/
+        }
         stage("push image to dockerhub"){
             steps{
                 sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
