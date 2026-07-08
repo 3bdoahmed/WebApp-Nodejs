@@ -12,14 +12,15 @@ pipeline{
         }
         stage('SonarQube Analysis') {
             steps{
-                def scannerHome = tool 'sonar';
-                withSonarQubeEnv() {
-                    sh "${scannerHome}/bin/sonar-scanner"
+                script {
+                    def scannerHome = tool 'sonar';
+                    withSonarQubeEnv('sonar') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
                 }
-
-            }
-    
-  }
+                
+            }  
+}
         /*stage('Trivy Security Scan'){
             steps {
                 sh ''' 
