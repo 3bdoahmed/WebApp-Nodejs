@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:22.17.1-alpine
 WORKDIR /app
 COPY webapp.js .
 EXPOSE 3000
